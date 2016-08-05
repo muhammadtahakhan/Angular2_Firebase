@@ -4,8 +4,9 @@
 
 <ul>
     <li *ngFor="let item of items | async">
-      <input type="text" #update [value]="item.text" />
-      <button (click)="update(item.$key, update.value)">Update</button>
+      <input type="text" [value]="item.text" #up />
+      <button (click)="update(item.$key, up.value)">Update</button>
+     
       <button (click)="deleteItem(item.$key)">Delete</button>
     </li>
   </ul>

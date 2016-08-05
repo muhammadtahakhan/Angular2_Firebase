@@ -11,11 +11,21 @@ export class AppComponent {
   title = 'app works!';
 items: FirebaseListObservable<any[]>;
   constructor(af:AngularFire){
-    this.items =  af.database.list('item'); 
+    this.items =  af.database.list('items'); 
   }
 
   add(newName: string) {
     this.items.push({ text: newName });
+}
+
+ update(key: string, name: string) {
+    this.items.update(key, { text: name });
+  }
+  deleteItem(key: string) {    
+    this.items.remove(key); 
+  }
+  deleteEverything() {
+    this.items.remove();
 }
 
 }
